@@ -1,6 +1,6 @@
 ## NewsInfinity
 
-## This project was created with the help of react js and react bootstrap as styling framework. This application fetches news from an external news API and displays news to users in a better way.
+## This project was created with the help of React js and React Bootstrap as styling framework. This application fetches news from an external news API and displays news to users in a better way.
 
 ## To start the project in your local computer...
 
