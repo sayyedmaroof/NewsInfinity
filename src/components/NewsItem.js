@@ -23,7 +23,7 @@ export class NewsItem extends Component {
             </Card.Text>
 
             <a
-              className="btn btn-info"
+              className="btn btn-primary"
               href={newsUrl}
               target="_blank"
               rel="noreferrer">
