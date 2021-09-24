@@ -6,7 +6,7 @@ import logo from '../logo.svg'
 export class NavBar extends Component {
   render() {
     return (
-      <Navbar bg="primary" variant="dark" expand="lg">
+      <Navbar bg="primary" variant="dark" expand="lg" className="sticky-top">
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>
