@@ -31,25 +31,25 @@ export class News extends Component {
     })
   }
 
-  async updateNews() {
+  async componentDidMount() {
+    this.props.setProgress(10)
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=${this.state.page}`
     this.setState({ loading: true })
     const data = await fetch(url)
+    this.props.setProgress(30)
     const parsedData = await data.json()
+    this.props.setProgress(70)
     console.log(parsedData.articles)
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false,
     })
+    this.props.setProgress(100)
     document.title =
       'NewsInfinity - ' +
       this.props.category.charAt(0).toUpperCase() +
       this.props.category.slice(1)
-  }
-
-  async componentDidMount() {
-    this.updateNews()
   }
 
   render() {

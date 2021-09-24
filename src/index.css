@@ -1,3 +1,27 @@
 .logo {
     filter: invert(100);
 }
+
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #a57edf;
+    border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: #9f69f0;
+    border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb:active {
+    background: #8d50e7;
+    border-radius: 10px;
+}

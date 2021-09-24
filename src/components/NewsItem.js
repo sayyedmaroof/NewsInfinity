@@ -12,7 +12,7 @@ export class NewsItem extends Component {
           <Card.Body>
             <Card.Title>{title}</Card.Title>
             <Card.Text>{description}</Card.Text>
-            <Badge pill bg="light" text="dark">
+            <Badge pill bg="dark" text="light">
               {source}
             </Badge>
             <Card.Text>
