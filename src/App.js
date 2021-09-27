@@ -24,7 +24,7 @@ export class App extends Component {
           <News
             setProgress={this.setProgress}
             pageSize={10}
-            country="in"
+            country="in,us"
             category="technology"
             apiKey={apiKey}
           />
@@ -33,7 +33,7 @@ export class App extends Component {
           <News
             setProgress={this.setProgress}
             pageSize={10}
-            country="in"
+            country="in,us"
             category="sports"
             apiKey={apiKey}
           />
@@ -42,7 +42,7 @@ export class App extends Component {
           <News
             setProgress={this.setProgress}
             pageSize={10}
-            country="in"
+            country="in,us"
             category="science"
             apiKey={apiKey}
           />
@@ -51,7 +51,7 @@ export class App extends Component {
           <News
             setProgress={this.setProgress}
             pageSize={10}
-            country="in"
+            country="in,us"
             category="health"
             apiKey={apiKey}
           />
@@ -60,7 +60,7 @@ export class App extends Component {
           <News
             setProgress={this.setProgress}
             pageSize={10}
-            country="in"
+            country="in,us"
             category="general"
             apiKey={apiKey}
           />
@@ -69,7 +69,7 @@ export class App extends Component {
           <News
             setProgress={this.setProgress}
             pageSize={10}
-            country="in"
+            country="in,us"
             category="entertainment"
             apiKey={apiKey}
           />
@@ -78,7 +78,7 @@ export class App extends Component {
           <News
             setProgress={this.setProgress}
             pageSize={10}
-            country="in"
+            country="in,us"
             category="business"
             apiKey={apiKey}
           />
@@ -87,7 +87,7 @@ export class App extends Component {
           <News
             setProgress={this.setProgress}
             pageSize={10}
-            country="in"
+            country="in,us"
             category="general"
             apiKey={apiKey}
           />

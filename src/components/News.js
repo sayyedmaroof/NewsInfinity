@@ -5,7 +5,7 @@ import NewsItem from './NewsItem'
 import PropTypes from 'prop-types'
 
 export class News extends Component {
-  state = { articles: [], loading: true, page: 1, totalResults: 0 }
+  state = { articles: [], loading: true, page: 0, totalResults: 0 }
 
   static defaultProps = {
     country: 'in',
@@ -20,29 +20,37 @@ export class News extends Component {
   }
 
   fetchMoreData = async () => {
-    this.setState({ page: this.state.page + 1 })
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=${this.state.page}`
+    this.setState({
+      page: this.state.page + this.props.pageSize,
+    })
+    // const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=${this.state.page}`
+    const url = `http://api.mediastack.com/v1/news?countries=${this.props.country}&categories=${this.props.category}&access_key=${this.props.apiKey}&limit=${this.props.pageSize}&offset=${this.state.page}`
     const data = await fetch(url)
     const parsedData = await data.json()
-    console.log(parsedData.articles)
+    // console.log(parsedData.articles)
     this.setState({
-      articles: this.state.articles.concat(parsedData.articles),
-      totalResults: parsedData.totalResults,
+      articles: this.state.articles.concat(parsedData.data),
+      totalResults: parsedData.pagination.total,
     })
   }
 
   async componentDidMount() {
     this.props.setProgress(10)
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=${this.state.page}`
+    // const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=${this.state.page}`
+    const url = `http://api.mediastack.com/v1/news?countries=${
+      this.props.country
+    }&categories=${this.props.category}&access_key=${this.props.apiKey}&limit=${
+      this.props.pageSize
+    }&offset=${0}`
     this.setState({ loading: true })
     const data = await fetch(url)
     this.props.setProgress(30)
     const parsedData = await data.json()
     this.props.setProgress(70)
-    console.log(parsedData.articles)
+    // console.log(parsedData.articles)
     this.setState({
-      articles: parsedData.articles,
-      totalResults: parsedData.totalResults,
+      articles: parsedData.data,
+      totalResults: parsedData.pagination.total,
       loading: false,
     })
     this.props.setProgress(100)
@@ -84,18 +92,21 @@ export class News extends Component {
           <Container>
             <Row>
               {this.state.articles
-                .filter(article => article.description && article.title)
+                .filter(
+                  article =>
+                    article.description && article.title && article.image
+                )
                 .map(article => {
                   return (
                     <Col sm={12} md={6} lg={4} xl={3} key={article.url}>
                       <NewsItem
                         title={article.title}
                         description={article.description}
-                        imgUrl={article.urlToImage}
+                        imgUrl={article.image}
                         newsUrl={article.url}
                         author={article.author}
-                        date={article.publishedAt}
-                        source={article.source.name}
+                        date={article.published_at}
+                        source={article.source}
                       />
                     </Col>
                   )
