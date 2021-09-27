@@ -24,7 +24,7 @@ export class News extends Component {
       page: this.state.page + this.props.pageSize,
     })
     // const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=${this.state.page}`
-    const url = `http://api.mediastack.com/v1/news?countries=${this.props.country}&categories=${this.props.category}&access_key=${this.props.apiKey}&limit=${this.props.pageSize}&offset=${this.state.page}`
+    const url = `https://api.mediastack.com/v1/news?countries=${this.props.country}&categories=${this.props.category}&access_key=${this.props.apiKey}&limit=${this.props.pageSize}&offset=${this.state.page}`
     const data = await fetch(url)
     const parsedData = await data.json()
     // console.log(parsedData.articles)
@@ -37,7 +37,7 @@ export class News extends Component {
   async componentDidMount() {
     this.props.setProgress(10)
     // const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=${this.state.page}`
-    const url = `http://api.mediastack.com/v1/news?countries=${
+    const url = `https://api.mediastack.com/v1/news?countries=${
       this.props.country
     }&categories=${this.props.category}&access_key=${this.props.apiKey}&limit=${
       this.props.pageSize
